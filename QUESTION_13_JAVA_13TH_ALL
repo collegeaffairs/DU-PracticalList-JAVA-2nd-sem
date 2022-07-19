@@ -1,0 +1,328 @@
+-----------------------------------------------------------------------ques 8 with swing--------------------------------------------------
+package krrish.codewithkrishna;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+
+//q8
+
+
+    public class Test  {
+
+        /* Write	 a	 program	 to	 create	 a	 frame using	 AWT.	 Implement	 mouseClicked(),
+         mouseEntered()	and	mouseExited()	events such	that:
+                 a) Size	of	the	frame	should	be	tripled	when	mouse	enters it.
+                 b) Frame	should	reduce	to	its	original	size	when	mouse	is	clicked	in	it.
+                 c) Close	the	frame	when	mouse	exits it
+
+         */
+        int w=600;
+        int h=600;
+
+
+        Test(){
+
+            JFrame jf = new JFrame();
+            jf.setTitle("QUESTION - 8 ");
+            jf.setBackground(Color.red);
+
+            jf.setSize(w,h);
+
+            jf.getContentPane().setBackground(Color.GREEN);
+
+
+            jf.setLayout( null);
+            jf.setVisible(true);
+
+           jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+          jf.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    jf.setSize(w,h);
+                }
+                public void mouseEntered(MouseEvent e) {
+                    jf.setSize(3*w,3*h);
+                }
+                public void mouseExited(MouseEvent e) {
+                    System.exit(0);
+                }
+            });
+        }
+
+
+
+        public static void main(String[] args) {
+
+            SwingUtilities.invokeLater(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                           Test tt = new Test();
+                        }
+                    }
+            );
+
+
+        }
+
+    }
+
+
+-------------------------------------------------------------------question 9 with swing---------------------------------------------
+
+package krrish.codewithkrishna;
+
+
+
+import javax.swing.*;
+import java.awt.*;
+
+//q9
+
+public class A extends JFrame {
+
+    JLabel label = new JLabel("THIS IS TO \n TEST LABEL");
+    A(){
+        setSize(600,600);
+        setBackground(Color.MAGENTA);
+        setVisible(true);
+        setLayout(null);
+        getContentPane().setBackground(Color.MAGENTA);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Font f = new Font("sans serif",Font.BOLD,50);
+        label.setFont(f);
+        label.setBounds(0,100,600,400);
+
+
+        add(label);
+
+
+
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        A obj = new A();
+                    }
+                }
+        );
+
+
+    }
+}
+
+
+-----------------------------------------------------------question 10 with swing---------------------------------------------------
+package krrish.codewithkrishna;
+
+//q10
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class B extends JFrame {
+
+    //sing	AWT,	write	a	 program	 to	 create	 two	 buttons	 named	 “Red”	and	 “Blue”.	When	a
+    //button	is	pressed	the	background	color	should	be	set	to	the	color	named	by	the	button’s
+    //label.
+
+    JButton btn1 ;
+    JButton btn2;
+
+
+    B(){
+        setSize(600,600);
+        setLayout(null);
+        getContentPane().setBackground(Color.YELLOW);
+        setVisible(true);
+        btn1 = new JButton("Red");
+        btn1.setBackground(Color.RED);
+        btn1.setBounds(50,50,80,50);
+        add(btn1);
+
+        btn2 = new JButton();
+        btn2.setBackground(Color.BLUE);
+        btn2.setText("BLUE");
+        btn2.setBounds(180,50,80,50);
+        add(btn2);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().setBackground(Color.RED);
+            }
+        });
+
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().setBackground(Color.BLUE);
+            }
+        });
+
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        B obj = new B();
+                    }
+                }
+        );
+    }
+}
+
+
+-----------------------------------------------------question 11 with swing----------------------------------------------------------------
+
+package krrish.codewithkrishna;
+
+//q11
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class C extends JFrame {
+    // Using	 AWT,	write	 a	 program	using	 appropriate	 adapter	 class	 to display	 the message
+    //(“Typed	character	is:	<typedCharacter>”) in	the	frame window when	user	types	any	key
+
+    JLabel label = new JLabel("type");
+
+
+    C(){
+
+        setSize(600,600);
+        getContentPane().setBackground(Color.ORANGE);
+        setLayout(null);
+        setVisible(true);
+
+        Font f = new Font("sans serif",Font.BOLD,20);
+        label.setFont(f);
+        label.setBounds(10,250,300,40);
+
+
+        add(label);
+
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char typed = e.getKeyChar();
+                label.setText("Typed character is : "+typed);
+            }
+        });
+
+
+
+
+    }
+
+    public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new C();
+            }
+        });
+
+    }
+}
+
+---------------------------------------------------------------------question 12 with swing--------------------------------------
+package krrish.codewithkrishna;
+
+//q12
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+
+public class D extends JFrame {
+
+
+    JButton btn1;
+    JButton btn2;
+
+    JLabel label;
+
+    D(){
+        setSize(600,600);
+        setBackground(Color.ORANGE);
+        setVisible(true);
+        setLayout(null);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        label = new JLabel("press Buttons");
+        Font f = new Font("sans serif",Font.BOLD,10);
+        label.setFont(f);
+        label.setBounds(10,100,600,400);
+
+        btn1 = new JButton("A");
+        btn1.setBackground(Color.GREEN);
+        btn2 = new JButton("B");
+        btn2.setBackground(Color.GREEN);
+
+        btn1.setBounds(30,50,50,50);
+        btn2.setBounds(100,50,50,50);
+
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setText("NAME : KRISHNA KUMAR , COURSE : BSC CS , ROLL NO. : 10852 , COLLEGE : KESHAV MAHAVIDYALAY");
+            }
+        });
+
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setText("CGPA in SEM. : 10 ");
+            }
+        });
+
+
+        add(btn1);
+        add(btn2);
+        add(label);
+    }
+
+    public static void main(String[] args) {
+
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new D();
+            }
+        });
+
+
+
+        //using	AWT,	write	a	program	to	create	two	buttons	labelled	‘A’	and	‘B’.	When	button	‘A’
+        //is	pressed,	it	displays	your	personal	information	(Name,	Course,	Roll	No,	College)	and
+        //when	button	‘B’	is	pressed,	it	displays	your	CGPA	in	previous	semester.
+
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
