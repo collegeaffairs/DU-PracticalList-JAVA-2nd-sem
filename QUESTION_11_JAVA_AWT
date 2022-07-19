@@ -1,0 +1,53 @@
+package krrish.codewithkrishna;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class A extends Frame {
+    // Using	 AWT,	write	 a	 program	using	 appropriate	 adapter	 class	 to display	 the message
+    //(“Typed	character	is:	<typedCharacter>”) in	the	frame window when	user	types	any	key
+
+    Label label = new Label("type");
+
+
+    A(){
+
+        setSize(600,600);
+        setBackground(Color.ORANGE);
+        setLayout(null);
+        setVisible(true);
+
+        Font f = new Font("sans serif",Font.BOLD,20);
+        label.setFont(f);
+        label.setBounds(10,250,300,40);
+
+
+        add(label);
+
+
+
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               char typed = e.getKeyChar();
+               label.setText("Typed character is : "+typed);
+            }
+        });
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+
+    }
+
+    public static void main(String[] args) {
+
+        A obj = new A();
+
+    }
+}
